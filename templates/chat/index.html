@@ -1,0 +1,79 @@
+
+{% load staticfiles %}
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="{% static 'css/materialize.css' %}"  media="screen,projection"/>
+        <link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+      <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/chat.js' %}"></script>
+    </head>
+
+    <body>
+    {% block body %}
+        <div class="section orange">
+            <div class="container white-text center-align text">
+                <a href="/"><img src="/static/img/logo.png"></a>
+            <p>Otocini araç sahipleri ile numara paylaşmadan iletişim kurmanızı sağlar.</p>
+            <small>Bu proje geliştirilirken Açık Kaynak yazılımlar kullanılmıştır.</small>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+            <div class="col s12 m8 l6 offset-m2 offset-l3">
+                <div class="section center-block">
+                <div class="giris">
+                    {% block form %}
+                    <h6 style="color: #039be5;" class="center-align text">
+                    Meşe Bilişim kurucusu Sayın Şahin Mersin'e sevgilerle..
+                    </h6>
+                      <h6 class="center-align text">
+                          Demo Hesaplar: 16DEMO16, 45DEMO45
+                          parola:demo123123
+                    </h6>
+                    <form id="login-form" class="form-group" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="username" id="id_username" type="text">
+                                <label for="id_username">Plakanız</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input name="password" id="id_password" type="password">
+                                <label for="id_password">Parolanız</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s8">
+                                <a href="{% url 'register' %}">Kayıt Ol</a>
+                            </div>
+                            <div class="col s4">
+                            <div class="right">
+                                <button class="btn waves-effect waves-light pull-s12">Giriş Yap</button>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                    {% endblock %}
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        {% endblock %}
+    </body>
+
+  </html>
